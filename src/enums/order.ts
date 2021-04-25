@@ -1,0 +1,6 @@
+export enum OrderStatus {
+  WILL_DISPATCH,
+  DISPATCHING,
+  DID_DISPATCH,
+  ACCEPTED,
+}

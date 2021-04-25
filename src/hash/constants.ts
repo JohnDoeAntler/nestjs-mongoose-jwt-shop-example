@@ -1,0 +1,1 @@
+export const hashSalt = "$2b$10$DIYz7KBxNakFNGGJBW5BiO";
