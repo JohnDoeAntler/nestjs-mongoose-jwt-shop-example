@@ -38,4 +38,16 @@ export class ProductsService {
       .populate('merchant')
       .lean();
   }
+
+  search(filter?: string) {
+    return this.productModel.find({
+      $or: [
+        {
+          name: { $regex: filter, $options: "i" },
+        }, {
+          description: { $regex: filter, $options: "i" },
+        },
+      ]
+    });
+  }
 }

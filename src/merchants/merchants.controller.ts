@@ -46,4 +46,9 @@ export class MerchantsController {
     const elm = await this.merchantsService.findById(doc._id);
     return await this.authService.login(elm);
   }
+
+  @Get('search/:filter')
+  search(@Param('filter') filter?: string) {
+    return this.merchantsService.search(filter);
+  }
 }

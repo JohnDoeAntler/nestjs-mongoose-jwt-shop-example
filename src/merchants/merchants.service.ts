@@ -46,4 +46,20 @@ export class MerchantsService {
       .select('-password')
       .lean();
   }
+
+  search(filter?: string) {
+    return this.merchantModel.find({
+      $or: [
+        {
+          username: { $regex: filter, $options: "i" },
+        }, {
+          nickname: { $regex: filter, $options: "i" },
+        }, {
+          phone: { $regex: filter, $options: "i" },
+        }, {
+          email: { $regex: filter, $options: "i" },
+        },
+      ]
+    });
+  }
 }

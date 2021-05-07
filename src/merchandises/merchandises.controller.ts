@@ -33,4 +33,9 @@ export class MerchandisesController {
   remove(@Param('id', ParseObjectIdPipe) id: ObjectId) {
     return this.merchandisesService.remove(id);
   }
+
+  @Get('search/:filter')
+  search(@Param('filter') filter?: string) {
+    return this.merchandisesService.search(filter);
+  }
 }

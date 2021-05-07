@@ -38,4 +38,16 @@ export class AccessoriesService {
       .populate('product')
       .lean();
   }
+
+  search(filter?: string) {
+    return this.accessoryModel.find({
+      $or: [
+        {
+          name: { $regex: filter, $options: "i" },
+        }, {
+          description: { $regex: filter, $options: "i" },
+        },
+      ]
+    });
+  }
 }

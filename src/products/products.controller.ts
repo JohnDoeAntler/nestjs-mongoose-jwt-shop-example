@@ -33,4 +33,9 @@ export class ProductsController {
   remove(@Param('id', ParseObjectIdPipe) id: ObjectId) {
     return this.productsService.remove(id);
   }
+
+  @Get('search/:filter')
+  search(@Param('filter') filter?: string) {
+    return this.productsService.search(filter);
+  }
 }

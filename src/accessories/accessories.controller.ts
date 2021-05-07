@@ -33,4 +33,9 @@ export class AccessoriesController {
   remove(@Param('id', ParseObjectIdPipe) id: ObjectId) {
     return this.accessoriesService.remove(id);
   }
+
+  @Get('search/:filter')
+  search(@Param('filter') filter?: string) {
+    return this.accessoriesService.search(filter);
+  }
 }

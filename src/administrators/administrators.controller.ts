@@ -33,4 +33,9 @@ export class AdministratorsController {
   remove(@Param('id', ParseObjectIdPipe) id: ObjectId) {
     return this.administratorsService.remove(id);
   }
+
+  @Get('search/:filter')
+  search(@Param('filter') filter?: string) {
+    return this.administratorsService.search(filter);
+  }
 }

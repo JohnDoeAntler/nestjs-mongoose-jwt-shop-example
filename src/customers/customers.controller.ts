@@ -48,4 +48,8 @@ export class CustomersController {
     return ret;
   }
 
+  @Get('search/:filter')
+  search(@Param('filter') filter?: string) {
+    return this.customersService.search(filter);
+  }
 }

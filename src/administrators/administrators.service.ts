@@ -46,4 +46,20 @@ export class AdministratorsService {
       .select('-password')
       .lean();
   }
+
+  search(filter?: string) {
+    return this.administratorModel.find({
+      $or: [
+        {
+          username: { $regex: filter, $options: "i" },
+        }, {
+          nickname: { $regex: filter, $options: "i" },
+        }, {
+          phone: { $regex: filter, $options: "i" },
+        }, {
+          email: { $regex: filter, $options: "i" },
+        },
+      ]
+    });
+  }
 }
