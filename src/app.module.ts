@@ -30,10 +30,14 @@ import { AuthModule } from './auth/auth.module';
 import { HashModule } from './hash/hash.module';
 import { APP_GUARD } from '@nestjs/core';
 import { RolesGuard } from './roles/roles.guard';
+import { UploadModule } from './upload/upload.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   // mongodb
   imports: [
+    ServeStaticModule.forRoot({ rootPath: join(__dirname, '..', 'public') }),
     MongooseModule.forRoot('mongodb://root:example@localhost:27017/nest'),
     AccountsModule,
     CustomersModule,
@@ -60,6 +64,7 @@ import { RolesGuard } from './roles/roles.guard';
     RequestsModule,
     AuthModule,
     HashModule,
+    UploadModule,
   ],
   controllers: [AppController],
   providers: [AppService],
