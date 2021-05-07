@@ -10,12 +10,12 @@ export class CreateMerchantDto {
 
   email?: string;
 
-  image_url?: string;
+  imageUrl?: string;
 
   role?: string;
 
-  membership_enable: boolean;
+  membershipEnable: boolean;
 
-  membership_fee?: number;
+  membershipFee?: number;
 
 }

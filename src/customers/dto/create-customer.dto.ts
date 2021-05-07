@@ -10,16 +10,16 @@ export class CreateCustomerDto {
 
   email?: string;
 
-  image_url?: string;
+  imageUrl?: string;
 
   role?: string;
 
-  address_1?: string;
+  address1?: string;
 
-  address_2?: string;
+  address2?: string;
 
-  address_3?: string;
+  address3?: string;
 
-  address_4?: string;
+  address4?: string;
 
 }

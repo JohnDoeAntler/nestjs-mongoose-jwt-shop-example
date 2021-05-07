@@ -10,7 +10,7 @@ export class CreateAdministratorDto {
 
   email?: string;
 
-  image_url?: string;
+  imageUrl?: string;
 
   role?: string;
 
