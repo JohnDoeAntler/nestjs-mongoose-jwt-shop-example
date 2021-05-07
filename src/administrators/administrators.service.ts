@@ -31,7 +31,11 @@ export class AdministratorsService {
       .lean();
   }
 
-  update(id: ObjectId, updateAdministratorDto: UpdateAdministratorDto) {
+  async update(id: ObjectId, updateAdministratorDto: UpdateAdministratorDto) {
+    if (updateAdministratorDto.password) {
+      updateAdministratorDto.password = await this.hashService.hash(updateAdministratorDto.password);
+    }
+
     return this.administratorModel.findByIdAndUpdate(id, updateAdministratorDto)
       .select('-password')
       .lean();

@@ -31,7 +31,11 @@ export class CustomersService {
       .lean();
   }
 
-  update(id: ObjectId, updateCustomerDto: UpdateCustomerDto) {
+  async update(id: ObjectId, updateCustomerDto: UpdateCustomerDto) {
+    if (updateCustomerDto.password) {
+      updateCustomerDto.password = await this.hashService.hash(updateCustomerDto.password);
+    }
+
     return this.customerModel.findByIdAndUpdate(id, updateCustomerDto)
       .select('-password')
       .lean();

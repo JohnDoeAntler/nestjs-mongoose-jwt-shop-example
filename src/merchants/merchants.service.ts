@@ -31,7 +31,11 @@ export class MerchantsService {
       .lean();
   }
 
-  update(id: ObjectId, updateMerchantDto: UpdateMerchantDto) {
+  async update(id: ObjectId, updateMerchantDto: UpdateMerchantDto) {
+    if (updateMerchantDto.password) {
+      updateMerchantDto.password = await this.hashService.hash(updateMerchantDto.password);
+    }
+
     return this.merchantModel.findByIdAndUpdate(id, updateMerchantDto)
       .select('-password')
       .lean();
